@@ -1,0 +1,3 @@
+class PageLayout extends PageSystem{
+
+}
