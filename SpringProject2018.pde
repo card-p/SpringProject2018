@@ -1,5 +1,6 @@
 //public class SpringProject2018{
     PageLayout layout = new PageLayout();
+    int number;
 
     void settings(){
         size(layout.getWindowSizeX(), layout.getWindowSizeY());
@@ -25,6 +26,7 @@
     }
 
     void mouseClicked(){
-        layout.clickInputSquareNumber();
+        number = layout.clickInputSquareNumber();
+        System.out.println(number);
     }
 //}

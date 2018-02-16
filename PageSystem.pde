@@ -26,21 +26,13 @@ public class PageSystem{
         image(img, width/4, topMargin/7);
     }
 
-    // (1,1) (1,2) (1,3)
-    // (2,1) (2,2) (2,3)
-    // (3,1) (3,2) (3,3)
-    protected void middleSquare(int x, int y){
-        rect(x + leftMargin, height-15, squareX, squareY);
-    }
-
-    //  1  2  3  4  5  6  7  8  9
-    // 10 11 12 13 14 15 16 17 18
-    //  :  :  :
-    // 73 74 75 76 77 78 79 80 81
-    protected void sudokuSquare(int n){
-        for(int i=1; i<=n; i++){
-            rect(squareX * i + leftMargin, topMargin, squareX * i + leftMargin, height - 30);
-        }
+    // (0,0) (1,0) (2,0)...(8,0)
+    // (0,1) (1,1) (2,1)...(8,1)
+    //  : :   : :   : : ... : :
+    // (0,8) (1,8) (2,8)...(8,8)
+    protected void sudokuSquare(int x, int y){
+        fill(50);
+        rect(squareX*x + leftMargin, squareY*y + topMargin, squareX, squareY);
     }
 
     // 線で描画
