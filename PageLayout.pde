@@ -1,17 +1,34 @@
 class PageLayout extends PageSystem{
+    int page = 0;
     String inputSquarePosition = "down"; // up or down
+    GameSystem game = new GameSystem();
 
-    /*void startPage(){
-    }*/
+    void startPage(){
+        background(255);
+        rectMode(CENTER);
+        fill(255);
+        rect(width/2, height*3/4, 100, 30);
+        fill(0);
+        text("GAME START", width/2 - 35, height*3/4 + 5);
+    }
 
     void playPage(){
         background(255);
+        rectMode(CORNER);
         showTitle();
         sudokuSquare();
         sudokuSquare(3,1);
 
         inputSquare(inputSquarePosition);
         inputSquareNumber(inputSquarePosition);
+    }
+
+    void clickStart(){
+        if(mouseX > (width/2 - 50) && mouseX < (width/2 + 50)
+            && mouseY > (height*3/4 - 15) && mouseY < (height*3/4 + 15)){
+            game.questionGenerate();
+            page = 1;
+        }
     }
 
     int clickInputSquareNumber(){

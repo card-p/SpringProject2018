@@ -11,22 +11,30 @@
     }
 
     void draw(){
-        layout.playPage();
+        //layout.playPage();
+        //layout.startPage();
 
-       /* switch(page) {
+        switch(layout.page) {
             case 0:
-                startPage();
+                layout.startPage();
                 break;
             case 1:
-                playPage();
+                layout.playPage();
                 break;
-            case 2:
-                clearPage();
-        }*/
+          /*  case 2:
+                clearPage();*/
+        }
     }
 
     void mouseClicked(){
-        number = layout.clickInputSquareNumber();
-        System.out.println(number);
+        switch(layout.page) {
+            case 0:
+                layout.clickStart();
+                break;
+            case 1:
+                number = layout.clickInputSquareNumber();
+                System.out.println(number);
+                break;
+        }
     }
 //}
