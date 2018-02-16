@@ -11,6 +11,7 @@ public class PageSystem{
 
     protected int page;
     protected int fontSize;
+    PImage img;
 
     public int getWindowSizeX(){
         return windowSizeX;
@@ -21,7 +22,8 @@ public class PageSystem{
     }
 
     protected void showTitle(){
-    
+        img = loadImage("title.png");
+        image(img, width/4, topMargin/7);
     }
 
     // (1,1) (1,2) (1,3)
@@ -41,6 +43,7 @@ public class PageSystem{
         }
     }
 
+    // 線で描画
     protected void sudokuSquare(){
         for(int i=0; i<10; i++){
             if(i%3 == 0){
@@ -62,31 +65,64 @@ public class PageSystem{
     protected void inputSquare(int n){
     }
 
-    protected void inputSquare(){
-        for(int i=0; i<4; i++){
-            if(i == 0 || i == 3){
-                stroke(0);
-                strokeWeight(2);
-            }else{
-                strokeWeight(1);
+    // 線で描画
+    protected void inputSquare(String position){
+        if(position == "up"){
+            for(int i=0; i<4; i++){
+                if(i == 0 || i == 3){
+                    stroke(0);
+                    strokeWeight(2);
+                }else{
+                    strokeWeight(1);
+                }
+                line(squareX*i + (leftMargin*2 + squareX*9), topMargin + squareY*3,
+                    squareX*i + (leftMargin*2 + squareX*9), bottomMargin - squareY*3);
+                line(leftMargin*2 + squareX*9, squareY*i + (topMargin + squareY*3),
+                    rightMargin, squareY*i + (topMargin + squareY*3)); 
             }
-            line(squareX*i + (leftMargin*2 + squareX*9), topMargin + squareY*6,
-                squareX*i + (leftMargin*2 + squareX*9), bottomMargin);
-            line(leftMargin*2 + squareX*9, squareY*i + (topMargin + squareY*6),
-                rightMargin, squareY*i + (topMargin + squareY*6));
+        }
+        if(position == "down"){
+            for(int i=0; i<4; i++){
+                if(i == 0 || i == 3){
+                    stroke(0);
+                    strokeWeight(2);
+                }else{
+                    strokeWeight(1);
+                }
+                line(squareX*i + (leftMargin*2 + squareX*9), topMargin + squareY*6,
+                    squareX*i + (leftMargin*2 + squareX*9), bottomMargin);
+                line(leftMargin*2 + squareX*9, squareY*i + (topMargin + squareY*6),
+                    rightMargin, squareY*i + (topMargin + squareY*6));
+            }
         }
     }
 
-    protected void inputSquareNumber(){
-        for(int i=0; i<9; i++){
-            if(i < 3){
-                fill(0);
-                text(i+1, 11 + squareX*(i%3) + (leftMargin*2 + squareX*9), 20 + topMargin + squareY*6);
-            }else if(i < 6){
-                text(i+1, 11 + squareX*(i%3) + (leftMargin*2 + squareX*9), 20 + topMargin + squareY*7);
-            }else{
-                text(i+1, 11 + squareX*(i%3) + (leftMargin*2 + squareX*9), 20 + topMargin + squareY*8);
+    // 数字の描画
+    protected void inputSquareNumber(String position){
+        if(position == "up"){
+            for(int i=0; i<9; i++){
+                if(i < 3){
+                    fill(0);
+                    text(i+1, 11 + squareX*(i%3) + (leftMargin*2 + squareX*9), 20 + topMargin + squareY*3);
+                }else if(i < 6){
+                    text(i+1, 11 + squareX*(i%3) + (leftMargin*2 + squareX*9), 20 + topMargin + squareY*4);
+                }else{
+                    text(i+1, 11 + squareX*(i%3) + (leftMargin*2 + squareX*9), 20 + topMargin + squareY*5);
+                }
+            }
+        }
+        if(position == "down"){
+            for(int i=0; i<9; i++){
+                if(i < 3){
+                    fill(0);
+                    text(i+1, 11 + squareX*(i%3) + (leftMargin*2 + squareX*9), 20 + topMargin + squareY*6);
+                }else if(i < 6){
+                    text(i+1, 11 + squareX*(i%3) + (leftMargin*2 + squareX*9), 20 + topMargin + squareY*7);
+                }else{
+                    text(i+1, 11 + squareX*(i%3) + (leftMargin*2 + squareX*9), 20 + topMargin + squareY*8);
+                }
             }
         }
     }
+
 }

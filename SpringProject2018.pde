@@ -23,4 +23,8 @@
                 clearPage();
         }*/
     }
+
+    void mouseClicked(){
+        layout.clickInputSquareNumber();
+    }
 //}
