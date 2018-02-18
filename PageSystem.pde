@@ -31,7 +31,7 @@ public class PageSystem{
     //  : :   : :   : : ... : :
     // (0,8) (1,8) (2,8)...(8,8)
     protected void sudokuSquare(int x, int y){
-        fill(50);
+        fill(255);
         rect(squareX*x + leftMargin, squareY*y + topMargin, squareX, squareY);
     }
 
@@ -51,6 +51,16 @@ public class PageSystem{
             }
             line(squareX * i + leftMargin, topMargin, squareX * i + leftMargin, bottomMargin);
             line(leftMargin, squareY * i + topMargin, squareY * 9 + leftMargin, squareY * i + topMargin);
+        }
+    }
+
+    // 問題番号表示
+    protected void sudokuSquareNumber(int[][] all_number){
+        fill(0);
+        for(int i=0; i<9; i++){
+            for(int j=0; j<9; j++){
+                text(all_number[i][j], squareX*i + leftMargin+11, squareY*j + topMargin+20);
+            }
         }
     }
 

@@ -11,9 +11,6 @@
     }
 
     void draw(){
-        //layout.playPage();
-        //layout.startPage();
-
         switch(layout.page) {
             case 0:
                 layout.startPage();
@@ -21,8 +18,8 @@
             case 1:
                 layout.playPage();
                 break;
-          /*  case 2:
-                clearPage();*/
+          //  case 2:
+          //      clearPage();
         }
     }
 
