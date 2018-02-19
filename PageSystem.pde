@@ -1,3 +1,7 @@
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class PageSystem{
     protected int windowSizeX = 450;
     protected int windowSizeY = 390;
@@ -11,7 +15,10 @@ public class PageSystem{
 
     protected int page;
     protected int fontSize;
-    PImage img;
+    protected boolean flag = true;
+    PImage title,rule;
+
+    List<Integer> random_list = new ArrayList<Integer>(Arrays.asList(0,1,2,3,4,5,6,7,8));
 
     public int getWindowSizeX(){
         return windowSizeX;
@@ -22,8 +29,13 @@ public class PageSystem{
     }
 
     protected void showTitle(){
-        img = loadImage("title.png");
-        image(img, width/4, topMargin/7);
+        title = loadImage("title.png");
+        image(title, width/4, topMargin/7);
+    }
+
+    protected void showRule(){
+        rule = loadImage("rule.png");
+        image(rule, 40, height/4);
     }
 
     // (0,0) (1,0) (2,0)...(8,0)
@@ -32,6 +44,7 @@ public class PageSystem{
     // (0,8) (1,8) (2,8)...(8,8)
     protected void sudokuSquare(int x, int y){
         fill(255);
+        strokeWeight(1);
         rect(squareX*x + leftMargin, squareY*y + topMargin, squareX, squareY);
     }
 
@@ -60,6 +73,41 @@ public class PageSystem{
         for(int i=0; i<9; i++){
             for(int j=0; j<9; j++){
                 text(all_number[i][j], squareX*i + leftMargin+11, squareY*j + topMargin+20);
+            }
+        }
+    }
+
+    // 問題数字を隠す
+    protected void hiddenSudoku(int l){
+        if(flag == true){
+            Collections.shuffle(random_list);
+            flag = false;
+        }
+        int j=0;
+        for(int i=0; i<9; i++){
+            j = random_list.get(i);
+            sudokuSquare(i,j); // 1
+            j = j+3;
+            if(j >= 9) j=j-9;
+            sudokuSquare(i,j); // 2
+            j = j+5;
+            if(j >= 9) j=j-9;
+            sudokuSquare(i,j); // 3
+
+            if(l > 1){
+                j = j+5;
+                if(j >= 9) j=j-9;
+                sudokuSquare(i,j); // 4
+            }
+            if(l > 2){
+                j = j+2;
+                if(j >= 9) j=j-9;
+                sudokuSquare(i,j); // 5
+            }
+            if(l > 3){
+                j = j+1;
+                if(j >= 9) j=j-9;
+                sudokuSquare(i,j); // 6
             }
         }
     }

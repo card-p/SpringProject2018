@@ -1,12 +1,20 @@
 class PageLayout extends PageSystem{
+    GameSystem game = new GameSystem();
     int page = 0;
     int[][] sudoku;
-    String inputSquarePosition = "down"; // up or down
-    GameSystem game = new GameSystem();
+    int level;
+    String inputSquarePosition; // up or down
+
+    // コンストラクタ
+    public PageLayout(int level, String position){
+        this.level = level;
+        this.inputSquarePosition = position; 
+    }
 
     void startPage(){
         background(255);
         showTitle();
+        showRule();
         rectMode(CENTER);
         fill(255);
         rect(width/2, height*3/4, 100, 30);
@@ -18,9 +26,10 @@ class PageLayout extends PageSystem{
         background(255);
         rectMode(CORNER);
         showTitle();
-        sudokuSquare();
         sudokuSquareNumber(sudoku);
-        sudokuSquare(3,1);
+        hiddenSudoku(level);
+        sudokuSquare();
+        //sudokuSquare(3,1);
 
         inputSquare(inputSquarePosition);
         inputSquareNumber(inputSquarePosition);

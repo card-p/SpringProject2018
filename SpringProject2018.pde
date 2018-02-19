@@ -1,5 +1,5 @@
 //public class SpringProject2018{
-    PageLayout layout = new PageLayout();
+    PageLayout layout = new PageLayout(4,"down");
     int number;
 
     void settings(){
