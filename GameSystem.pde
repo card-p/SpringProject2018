@@ -64,6 +64,8 @@ public class GameSystem{
             }
         }
         */
+
+        // 弱すぎ
         sudoku[0][0]=sudoku[1][6]=sudoku[2][3]=sudoku[3][2]=sudoku[4][8]=sudoku[5][5]=sudoku[6][1]=sudoku[7][7]=sudoku[8][4]=a_set[0]; // 1
         sudoku[0][3]=sudoku[1][0]=sudoku[2][6]=sudoku[3][5]=sudoku[4][2]=sudoku[5][8]=sudoku[6][4]=sudoku[7][1]=sudoku[8][7]=a_set[1]; // 2
         sudoku[0][6]=sudoku[1][3]=sudoku[2][0]=sudoku[3][8]=sudoku[4][5]=sudoku[5][2]=sudoku[6][7]=sudoku[7][4]=sudoku[8][1]=a_set[2]; // 3

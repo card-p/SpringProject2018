@@ -50,6 +50,7 @@ class PageLayout extends PageSystem{
         }
     }
 
+    // 弱い
     int clickInputSquareNumber(){
         float left = leftMargin*2 + squareX*9;
         float up = topMargin + squareY*6;
